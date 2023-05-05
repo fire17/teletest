@@ -1,4 +1,4 @@
-from env.py import api_key
+from env import api_key
 
 from telegram.ext import *
 #import Responses as R
@@ -18,7 +18,7 @@ def error(update, context):
     print(err)
     return err
 
-def incoming(source, *args **kwargs):
+def incoming(source, *args, **kwargs):
     text = str(source.message.text)
     print(" ::: incoming ::: ", text, args, kwargs)
     print(source)
@@ -32,7 +32,7 @@ def incoming(source, *args **kwargs):
 
 
 if __name__ == "__main__":
-    print(" ::: Welcome To Telegram Integration :::")
+    print(" ::: Welcome To Telegram Integration :::" , api_key)
     updater = Updater(api_key, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", cmd_start))
@@ -43,7 +43,6 @@ if __name__ == "__main__":
     updater.start_polling()
     updater.idle()
     
-    
-print("#######################FIN######")
+    print("#######################FIN######")
  
     
